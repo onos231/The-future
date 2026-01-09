@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Payment Portal</title>
+  <link href="../../dist/output.css" rel="stylesheet">
+</head>
+<body class="dark:bg-gray-900 text-black dark:text-white font-sans">
+  <!-- Header -->
+	<header class="flex items-center justify-between px-4 py-3 bg-white shadow">
+    <img src="../../img/logo/app-logo.png" alt="SwapIt Logo" class="h-8">
+    <a href="../../all-users/settings.html"><div class="w-9 h-9 bg-gray-200 rounded-full flex items-center justify-center">
+      <img src="../../img/profile/profile.svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 15c2.485 0 4.797.758 6.879 2.052M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      
+		</div></a>
+  </header>
+
+  <header class="bg-[#0E4D22] text-white">
+    <div class="mx-auto relative px-4 pt-6 pb-5">
+      <h1 class="text-center font-semibold">Become an Investor</h1>
+      <!-- Close button only (right) -->
+      <button
+        type="button"
+        aria-label="Close"
+        class="absolute right-3 top-5 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition"
+        onclick="history.back()">
+        ✕
+      </button>
+    </div>
+    <!-- curved white top like in mock -->
+    <div class="max-w-md mx-auto dark:bg-gray-900 bg-white rounded-t-3xl h-6"></div>
+  </header>
+	
+<div class="max-w-md mx-auto p-4">
+    
+
+  <div class="max-w-2xl mx-auto mt-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+	  
+    <div class="flex justify-between items-center mb-4 py-4 px-4">
+      <h2 class="text-lg font-bold font-Kodchasan">Investor Signup</h2>
+      <button id="clearAllBtn" class="text-sm text-red-500 dark:text-red-300 underline">Clear All</button>
+    </div>
+	  <div class="px-4">
+    <div id="formStepTitle" class="text-xl font-bold mb-4 dark:text-green-200 font-bold font-Kodchasan ">Step 1 of 3</div>
+    <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+      <div id="progressBar" class="bg-green-600 h-2 rounded-full" style="width: 33%;"></div>
+    </div>
+</div>
+    <!-- Step 1 -->
+    <div id="step1" class="space-y-4 py-4 px-4 dark:bg-gray-800">
+      <h3 class="font-semibold mb-2">Business Info</h3>
+      <label class="block dark:text-gray-300">
+        <div class="px-4">Full Name / Business Name *</div>
+        <input type="text" id="name" class="w-full border dark:bg-gray-900 dark:text-whitedark:text-white px-4 rounded-md dark:border-gray-900 p-2" placeholder="e.g. Name of Project" required />
+      </label>
+		
+		<div>
+		<label for="donationType" class="block font-medium  dark:text-green-200 px-4">Business Category *</label>
+		
+		<div class="relative">
+			 
+  <select 
+    id="category" 
+    name="category" 
+    required
+    class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm 
+           bg-white dark:bg-gray-900 dark:border-gray-900 focus:ring-green-600 focus:border-green-600 
+           text-gray-700 dark:text-gray-300 appearance-none leading-tight h-[42px]"
+  >
+   <option value="">Select Category</option>
+          <option>Organic Farming</option>
+          <option>Food Processing</option>
+          <option>Distribution</option>
+          <option>Others</option>
+  </select>
+
+  <!-- Custom dropdown arrow -->
+  <svg 
+    class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+  </svg>
+</div>
+</div>
+      <!--<label class="block dark:text-gray-300">
+		  <div class="px-4">Business Category *</div>
+        <select id="category" class="w-full border dark:bg-gray-900 rounded-md dark:text-white dark:border-gray-900 rounded p-2 appearance-none leading-tight" required>
+          <option value="">Select Category</option>
+          <option>Organic Farming</option>
+          <option>Food Processing</option>
+          <option>Distribution</option>
+          <option>Others</option>
+        </select>
+      </label>-->
+		
+		
+      <label class="block dark:text-gray-300">
+		  <div class="px-4">Brief Bio *</div>
+        <textarea id="bio" class="w-full border dark:bg-gray-900 dark:text-white rounded-md dark:border-gray-900 rounded p-2 px-4" placeholder="Tell us about your focus on the investment" required></textarea>
+      </label>
+    </div>
+
+    <!-- Step 2: Investment Info -->
+    <div id="step2" class="space-y-4 hidden py-4 px-4 dark:bg-gray-800">
+      <h3 class="font-semibold mb-2 dark:text-green-200">Investment Info</h3>
+      <label class="block dark:text-gray-300">
+        Industry / Investment Focus *
+        <input type="text" id="focus" class="w-full border dark:bg-gray-900 dark:text-white rounded-md dark:border-gray-900  rounded p-2" placeholder="Type of investment"  required />
+      </label>
+      <label class="block dark:text-gray-300">
+        Investment Capacity (₦) *
+        <input type="number" id="capacity" class="w-full border dark:bg-gray-900 dark:text-white rounded-md dark:border-gray-900 rounded p-2" placeholder="e.g. ₦2,000,000" required />
+      </label>
+      <label class="block dark:text-gray-300">
+        Years of Experience *
+        <input type="text" id="experience" class="w-full border dark:bg-gray-900 dark:text-white rounded-md dark:border-gray-900 rounded p-2" placeholder="e.g. 10 years" required />
+      </label>
+    </div>
+
+    <!-- Step 3 -->
+    <div id="step3" class="space-y-4 hidden py-4 px-4">
+      <h3 class="font-semibold mb-2">Uploads</h3>
+      <label class="block">
+        Upload Profile Photo/Logo *
+        <input type="file" id="photo" accept="image/png, image/jpeg" class="w-full border rounded-md p-4 dark:bg-gray-900 dark:border-gray-700" required />
+        <small class="text-xs text-gray-500">Accepted formats: JPEG, PNG</small>
+      </label>
+      <label class="block">
+        Upload ID Document (Optional)
+        <input type="file" id="idDoc" accept="application/pdf, image/png, image/jpeg" class="w-full border rounded-md p-4 dark:bg-gray-900 dark:border-gray-700" />
+        <small class="text-xs text-gray-500">Accepted formats: PDF, JPEG, PNG</small>
+      </label>
+
+      <div class="flex flex-col space-y-2 mt-6">
+        <button id="previewBtn" class="bg-blue-500 text-white py-2 px-4 rounded disabled:opacity-50" disabled>Preview</button>
+        <button id="submitBtn" class="bg-yellow-500 py-2 px-4 rounded-md dark:bg-yellow-500 disabled:opacity-50" disabled>Submit</button>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="flex justify-between mt-6">
+      <button id="prevBtn" class="border py-2 px-4 rounded hidden dark:text-green-200 dark:border-gray-700 text-green-700">Prev</button>
+      <button id="nextBtn" class="dark:text-green-200 text-green-700 py-2 px-4 rounded ml-auto disabled:opacity-50">Next</button>
+    </div>
+  </div>
+	</div>
+	
+  <script>
+    let step = 1;
+    const totalSteps = 3;
+
+    const fields = ["name", "category", "bio", "focus", "capacity", "experience"];
+    const fileFields = ["photo", "idDoc"];
+
+    // Restore data if exists
+    window.addEventListener("load", async () => {
+      const saved = localStorage.getItem("investorPreviewData");
+      if (!saved) return;
+      const data = JSON.parse(saved);
+
+      fields.forEach(id => {
+        if (data[id]) document.getElementById(id).value = data[id];
+      });
+
+      // Restore images (base64 or blob URL)
+      if (data.photoURL) {
+        const photoEl = document.getElementById("photo");
+        photoEl.dataset.savedURL = data.photoURL;
+        photoEl.dataset.savedName = data.photoName;
+      }
+      if (data.idDocURL) {
+        const idDocEl = document.getElementById("idDoc");
+        idDocEl.dataset.savedURL = data.idDocURL;
+        idDocEl.dataset.savedName = data.idDocName;
+      }
+
+      validateStep();
+      updateStep();
+    });
+
+    const updateStep = () => {
+      document.querySelectorAll("[id^='step']").forEach((el, index) => {
+        el.classList.toggle("hidden", index + 1 !== step);
+      });
+      document.getElementById("formStepTitle").textContent = `Step ${step} of ${totalSteps}`;
+      document.getElementById("progressBar").style.width = `${(step / totalSteps) * 100}%`;
+      document.getElementById("prevBtn").classList.toggle("hidden", step === 1);
+      document.getElementById("nextBtn").classList.toggle("hidden", step === totalSteps);
+      validateStep();
+    };
+
+    const validateStep = () => {
+      let valid = false;
+      if (step === 1) valid = fields.slice(0,3).every(id => document.getElementById(id).value.trim());
+      else if (step === 2) valid = fields.slice(3).every(id => document.getElementById(id).value.trim());
+      else if (step === 3) {
+        const photo = document.getElementById("photo");
+        valid = (photo.files.length > 0 || photo.dataset.savedURL);
+      }
+
+      document.getElementById("nextBtn").disabled = !valid;
+
+      const allValid = fields.every(id => document.getElementById(id).value.trim()) &&
+        (document.getElementById("photo").files.length > 0 || document.getElementById("photo").dataset.savedURL);
+      document.getElementById("previewBtn").disabled = !allValid;
+      document.getElementById("submitBtn").disabled = !allValid;
+    };
+
+    document.querySelectorAll("input, select, textarea").forEach(el => {
+      el.addEventListener("input", validateStep);
+      el.addEventListener("change", validateStep);
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      if (step < totalSteps) step++;
+      updateStep();
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      if (step > 1) step--;
+      updateStep();
+    });
+
+    // Save to localStorage continuously
+    const saveData = () => {
+      const data = {};
+      fields.forEach(id => data[id] = document.getElementById(id).value);
+      const photo = document.getElementById("photo");
+      const idDoc = document.getElementById("idDoc");
+
+      if (photo.files.length > 0) {
+        const f = photo.files[0];
+        data.photoName = f.name;
+        data.photoURL = URL.createObjectURL(f);
+      } else if (photo.dataset.savedURL) {
+        data.photoName = photo.dataset.savedName;
+        data.photoURL = photo.dataset.savedURL;
+      }
+
+      if (idDoc.files.length > 0) {
+        const f = idDoc.files[0];
+        data.idDocName = f.name;
+        data.idDocType = f.type;
+        data.idDocURL = URL.createObjectURL(f);
+      } else if (idDoc.dataset.savedURL) {
+        data.idDocName = idDoc.dataset.savedName;
+        data.idDocURL = idDoc.dataset.savedURL;
+      }
+
+      localStorage.setItem("investorPreviewData", JSON.stringify(data));
+    };
+
+    document.querySelectorAll("input, textarea").forEach(el => el.addEventListener("change", saveData));
+    document.getElementById("previewBtn").addEventListener("click", e => {
+      e.preventDefault();
+      saveData();
+      window.open("investor-preview.html", "Preview", "width=900,height=750,scrollbars=yes");
+    });
+
+    // Clear All Button
+    document.getElementById("clearAllBtn").addEventListener("click", () => {
+      if (confirm("Are you sure you want to clear all data?")) {
+        localStorage.removeItem("investorPreviewData");
+        window.location.reload();
+      }
+    });
+
+    updateStep();
+  </script>
+	<script src="../../js/script.js"></script>
+</body>
+</html>
+
+
+

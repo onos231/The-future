@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Afromark — Dashboard</title>
+  <!-- Link to your compiled Tailwind CSS -->
+  <link href="../../dist/output.css" rel="stylesheet">
+</head>
+<body class=" dark:bg-gray-900 text-black dark:text-white font-sans">
+
+  <div class="min-h-screen flex">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="hidden md:flex md:flex-col w-72 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 p-5 space-y-6">
+      <div class="flex items-center gap-3  px-4 py-4 rounded-half">
+        <!-- Replace with your SVG logo or <img> -->
+        <div class=" rounded-full flex items-center justify-center text-white font-bold"> <img src="../../img/logo/app-logo.png" alt="SwapIt Logo" class="h-8"></div>
+        <div>
+        
+        </div>
+      </div>
+
+      <nav class="flex-1">
+  <ul class="space-y-2 text-sm">
+    <li>
+      <a href="../../index-web.html" data-page="index"
+         class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50">
+		  <img src="../../img/buttom-nav/index/Home-green.svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <span>Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../dashboard/dashboard-web.html" data-page="dashboard"
+         class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50">
+		  <img src="../../img/buttom-nav/index/dashboard-green.svg" alt="SwapIt Logo" class="h-3">
+        <span>Dashboard Overview</span>
+      </a>
+    </li>
+	  <li>
+      <a href="../../donation/donation-web-search.html" data-page="donations"
+         class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50">
+		  <img src="../../img/buttom-nav/index/giveback-green.svg" alt="SwapIt Logo" class="h-3">
+        <span>Donations & Request</span>
+      </a>
+    </li>
+	  <li>
+      <a href="investor-marketplace-web.html"
+         class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50">
+		  <img src="../../img/buttom-nav/index/investment.svg" alt="SwapIt Logo" class="h-4">
+        <span>Pitches & Investment</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../all-users/redeem-points-web.html" data-page="profile-points"
+         class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50">
+		  <img src="../../img/buttom-nav/index/points.svg" alt="SwapIt Logo" class="h-4 px-1">
+        <span>A-Points & Rewards</span>
+      </a>
+    </li>
+    
+    <li>
+      <a href="premium-web.html" data-page="premium"
+         class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50">
+		  <img src="../../img/buttom-nav/index/premium-green.svg" alt="SwapIt Logo" class="h-4">
+        <span>Premium Offers</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../all-users/settings-web.html" data-page="settings"
+         class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50"><img src="../../img/buttom-nav/index/acc-green.svg" alt="SwapIt Logo" class="h-3">
+        <span>Accounts & Settings</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="mt-auto">
+        <button class="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-50 text-sm text-red-600">Logout</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-1 flex flex-col ">
+
+      <!-- TOPBAR (mobile hamburger + search + profile) -->
+		<header class="flex items-center justify-between px-6 py-4 bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+        <div class="flex items-center gap-3">
+          <!-- Hamburger for small screens -->
+         <button id="openSidebarBtn" class="block md:hidden p-2 rounded-md bg-gray-100 dark:bg-gray-700">
+            <svg class="w-5 h-5 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+
+
+          <div class="relative hidden sm:block">
+            <input type="search" placeholder="Search swaps, users, items..." class="w-80 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-900 bg-gray-50 text-sm focus:ring-1 focus:ring-green-200 outline-none dark:bg-gray-800">
+			  <img src="../../img/search/search.svg" alt="Profile" class="absolute right-3 top-2.5 w-4 h-4 text-gray-400" fill="none">
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button class="p-2 rounded-md hover:bg-gray-50" title="Notifications">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159a2.032 2.032 0 01-.595 1.436L4 17h5"/></svg>
+          </button>
+
+          <!-- Profile / My Account -->
+          <div class="flex items-center gap-2 p-1 rounded-md hover:bg-gray-50 cursor-pointer">
+            <img src="../../img/profile/profile-pic.jpg" alt="Profile" class="w-8 h-8 rounded-full object-cover">
+            <div class="text-sm text-right">
+              <div class="font-medium">My Account</div>
+              <div class="text-xs text-gray-500">Manage profile</div>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+	
+		
+		<header class="hidden block md:hidden bg-[#0E4D22] text-white">
+    <div class="max-w-md mx-auto relative px-4 pt-6 pb-5">
+      <h1 class="text-center font-semibold dark:text-green-200">Dashboard</h1>
+      <!-- Close button only (right) -->
+		<button
+        type="button"
+        aria-label="Close"
+        class="absolute left-3 top-5 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition"
+        onclick="window.location.href='../index.html'">
+        <img src="../../img/nav/back-arrow-1.png" alt="SwapIt Logo" class="h-3">
+      </button>
+      
+    </div>
+    <!-- curved white top like in mock -->
+    <div class="max-w-md mx-auto bg-white dark:bg-gray-900 rounded-t-3xl h-6"></div>
+  </header>
+
+      <!-- DASHBOARD GRID -->
+      <div class="w-full">
+  <header class="bg-[#0E4D22] text-white">
+	  	<div class="block md:hidden max-w-md mx-auto relative px-4 pt-6 pb-1">
+      <div class="max-w-md mx-auto relative px-4 pt-6 pb-5">
+      <h1 class="text-center font-semibold mt-4">For everyone: readers and non-readers.<br>
+      Use typing or voice command.</h1>
+      
+    </div>
+      <!-- Close button only (right) -->
+      <button
+        type="button"
+        aria-label="Close"
+        class="absolute left-3 top-5 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/20 transition"
+        onclick="history.back()">
+        <img src="../../img/nav/back-arrow-1.png" alt="SwapIt Logo" class="h-3">
+      </button>
+    </div>
+	  
+	  
+    
+	  <div class="flex justify-between items-center px-20 py-2 dark:border-gray-900">
+    <button onclick="window.location.href='../../dashboard/investment-overview.html'" class="text-sm font-bold font-Kodchasan text-green-200 dark:text-green-200">Investment</button>
+    <button onclick="window.location.href='investor-signup.html'" class="px-3 py-1 rounded text-sm font-bold font-Kodchasan text-green-200 border border-gray-300 dark:text-green-200">+ Be an Investor</button>
+  </div>
+    <!-- curved white top like in mock -->
+    <div class="max-w-md mx-auto bg-white dark:bg-green-900 rounded-t-3xl h-6"></div>
+  </header>
+
+  <!-- Filters -->
+	<div class="flex gap-2 mx-auto px-4">
+	<div class="relative w-full">
+			 
+  <select 
+    id="categoryFilter" 
+    name="category" 
+    required
+    class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm 
+           bg-white dark:bg-gray-800 dark:border-gray-900 focus:ring-green-600 focus:border-green-600 
+           text-gray-700 dark:text-gray-300 appearance-none leading-tight h-[42px]"
+  >
+   <option value="">All Category</option>
+          <option value="food">Foodstock Trade</option>
+          <option value="crop">Crop Farming</option>
+          <option value="animal">Animal Farming</option>
+  </select>
+
+  <!-- Custom dropdown arrow -->
+  <svg 
+    class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+  </svg>
+</div>
+	
+	<div class="relative w-full">
+			 
+  <select 
+    id="sortFilter" 
+    name="category" 
+    required
+    class="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm 
+           bg-white dark:bg-gray-800 dark:border-gray-900 focus:ring-green-600 focus:border-green-600 
+           text-gray-700 dark:text-gray-300 appearance-none leading-tight h-[42px]"
+  >
+   <option value="">Sort by</option>
+          <option value="lowest">Lowest amount</option>
+          <option value="highest">Highest amount</option>
+          <option value="recent">Most recent</option>
+  </select>
+
+  <!-- Custom dropdown arrow -->
+  <svg 
+    class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+  </svg>
+</div>
+	</div>
+
+	
+
+
+  <!-- Results -->
+	<div id="results" class="flex-grow px-6 py-3 mb-20 overflow-y-auto 
+  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+
+      <!-- Cards container -->
+     
+        <!-- NO RESULTS placeholder -->
+        <div id="noResults" class="hidden text-center py-12 text-gray-600">
+          <div class="text-lg font-semibold mb-2">No investors found</div>
+          <div class="text-sm">Try a different category or clear filters.</div>
+        </div>
+
+        <!-- Investor Card template (1) -->
+ <article class="investor-card relative dark:bg-gray-800 px-4 py-4 shadow-deep rounded-lg card-shadow border border-transparent w-full" data-category="crop,food"
+                 data-funding="500000-4000000"
+                 data-date="2025-09-01">
+
+        
+          <!-- top-left checkbox -->
+          <input type="checkbox" class="absolute left-3 top-3 w-4 h-4 text-green-600 " />
+
+          <!-- report swap top-right -->
+          <a href="../../all-users/report.html" class="absolute right-3 top-3 text-red-900 dark:text-red-300 text-xs font-thin">Report Swap</a>
+<div>
+          <div class="flex gap-3 pt-8">
+            <!-- thumbnail left -->
+            <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=..." 
+                 alt="thumbnail"
+                 class="w-20 h-20 rounded-md object-cover flex-shrink-0" />
+
+            <!-- right content -->
+            <div class="flex-1">
+              <div class="flex items-start justify-between dark:text-gray-500">
+                <h3 class="text-lg font-semibold leading-tight opacity-50 font-Kodchasan">GreenHarvet Capital</h3>
+                <span class="ml-2 inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-600 text-white text-xs">✓</span>
+              </div>
+
+              <div class="text-sm text-gray-700 mt-1 dark:text-white">
+                <div><span class="font-semibold dark:text-gray-500">Focus:</span> Crop farming</div>
+                <div class="mt-1"><span class="font-semibold dark:text-gray-500">Funding:</span> ₦1.5M - ₦4M</div>
+                <div class="mt-1"><span class="font-bold">Accepts:</span> PDF, Pitch proposal</div>
+              </div>
+
+              <div class="text-xs text-gray-500 mt-2 flex items-center gap-3 dark:text-blue-300">
+                <span>📍 Ikeja, Lagos</span>
+                <span>● Today</span>
+              </div>
+
+             
+            </div>
+			  
+        
+          </div>
+	  
+	<p class="text-sm py-1 px-2 text-gray-700 mt-3  text-xl dark:text-gray-400"><span class="text-blue-500 font-Kodchasan">Investor Note: </span>I need a step by step detailed information of how you intend to invest...</p>
+
+          
+
+              <!-- actions row: Cancel (left) / Send Pitch (right) -->
+              <div class="flex items-center gap-3 mt-3">
+                <button class="cancel-btn hidden flex-1 border border-gray-300 rounded py-2 p-5 text-sm text-red-500 dark:text-red-300 dark:border-gray-500">Cancel</button>
+                <div class="flex-1"></div>
+                <button class="send-btn bg-green-600 text-white rounded py-2 px-3 text-sm">Send Pitch</button>
+              </div>
+	</div>
+			<!-- View Profile button centered, width 300px (as requested) -->
+				
+			<div class="mt-4 flex">
+          <button onclick="window.location.href='investor-preview.html'" id="viewProfileBtn" class="w-[320px] py-2 rounded-md bg-sky-600 text-white hover:bg-sky-700">
+            View Investor Profile
+          </button>
+        </div>
+        </article>
+
+        <!-- Investor Card template (2) -->
+        <article class="investor-card relative dark:bg-gray-800 px-4 py-4 shadow-deep rounded-lg card-shadow border border-transparent w-full" data-category="crop,food"
+                 data-funding="500000-4000000"
+                 data-date="2025-09-01">
+          <input type="checkbox" class="absolute left-3 top-3 w-4 h-4 text-green-600" />
+          <a href="../../all-users/report.html" class="absolute right-3 top-3 text-red-900 dark:text-red-300 text-xs font-thin">Report Swap</a>
+<div>
+          <div class="flex gap-3 pt-8">
+            <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=..." 
+                 alt="thumbnail"
+                 class="w-20 h-20 rounded-md object-cover flex-shrink-0" />
+
+            <div class="flex-1">
+              <div class="flex items-start justify-between dark:text-gray-500">
+                <h3 class="text-lg font-semibold leading-tight">AgriTech</h3>
+                <span class="ml-2 inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-600 text-white text-xs">✓</span>
+              </div>
+
+              <div class="text-sm text-gray-700 mt-1 dark:text-white">
+                <div><span class="font-semibold dark:text-gray-500">Focus:</span> Poultry</div>
+                <div class="mt-1"><span class="font-semibold dark:text-gray-500">Funding:</span> ₦2.5M - ₦10M</div>
+                <div class="mt-1"><span class="font-bold">Accepts:</span> PDF, Pitch proposal</div>
+              </div>
+
+              <div class="text-xs text-gray-500 mt-2 flex items-center gap-3 dark:text-blue-300">
+                <span>📍 Uyo, Akwa Ibom</span>
+                <span>● Last Week</span>
+              </div>
+
+             
+            </div>
+          </div>
+	<p class="text-sm py-1 px-2 text-gray-700 mt-3 font-Kodchasan text-xl dark:text-gray-400"><span>Investor Note:</span> Plans to buy reusable crates and hire part-time delivery crew</p>
+
+
+             
+
+              <div class="flex items-center gap-3 mt-3">
+                <button class="cancel-btn hidden flex-1 border border-gray-300 rounded py-2 p-5 text-sm text-red-500 dark:text-red-300 dark:border-gray-500">Cancel</button>
+                <div class="flex-1"></div>
+                <button class="send-btn bg-green-600 text-white rounded py-2 px-3 text-sm">Send Pitch</button>
+              </div>
+	</div>
+			<div class="mt-4 flex">
+          <button onclick="window.location.href='investor-preview.html'" id="viewProfileBtn" class="w-[320px] py-2 rounded-md bg-sky-600 text-white hover:bg-sky-700">
+            View Investor Profile
+          </button>
+        </div>
+        </article>
+
+        <!-- Investor Card template (3) -->
+        <article class="investor-card relative dark:bg-gray-800 px-4 py-4 shadow-deep rounded-lg card-shadow border border-transparent w-full" data-category="crop,food"
+                 data-funding="500000-4000000"
+                 data-date="2025-09-01">
+          <input type="checkbox" class="absolute left-3 top-3 w-4 h-4 text-green-600" />
+          <a href="../../all-users/report.html" class="absolute right-3 top-3 text-red-900 dark:text-red-300 text-xs font-thin">Report Swap</a>
+<div>
+          <div class="flex gap-3 pt-8">
+            <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=..." 
+                 alt="thumbnail"
+                 class="w-20 h-20 rounded-md object-cover flex-shrink-0" />
+
+            <div class="flex-1">
+              <div class="flex items-start justify-between dark:text-gray-500">
+                <h3 class="text-lg font-semibold leading-tight">AgroVision</h3>
+                <span class="ml-2 inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-600 text-white text-xs">✓</span>
+              </div>
+
+              <div class="text-sm text-gray-700 mt-1 dark:text-white">
+                <div><span class="font-semibold dark:text-gray-500">Focus:</span> Animal Farming</div>
+                <div class="mt-1"><span class="font-semibold dark:text-gray-500">Funding:</span> ₦500K - ₦4m</div>
+                <div class="mt-1"><span class="font-bold">Accepts:</span> PDF, Pitch proposal</div>
+              </div>
+
+              <div class="text-xs text-gray-500 mt-2 flex items-center gap-3 dark:text-blue-300">
+                <span>📍 Kubwa, Abuja</span>
+                <span>● 2d ago</span>
+              </div>
+
+             
+            </div>
+          </div>
+	<p class="text-sm py-1 px-2 text-gray-700 mt-3 font-Kodchasan text-xl dark:text-gray-400"><span>Investor Note:</span> Looking for innovative farming solutions with quick turnaround.</p>
+
+            
+
+              <div class="flex items-center gap-3 mt-3 ">
+                <button class="cancel-btn hidden flex-1 border border-gray-300 rounded py-2 p-5 text-sm text-red-500 dark:text-red-300 dark:border-gray-500">Cancel</button>
+                <div class="flex-1"></div>
+                <button class="send-btn bg-green-600 text-white rounded py-2 px-3 text-sm">Send Pitch</button>
+              </div>
+	</div>
+			<div class="mt-4 flex">
+          <button onclick="window.location.href='investor-preview.html'" id="viewProfileBtn" class="w-[320px] py-2 rounded-md bg-sky-600 text-white hover:bg-sky-700">
+            View Investor Profile
+          </button>
+        </div>
+        </article>
+
+  
+  
+  </div>
+
+
+  
+	</div>
+    </div>
+  </div>
+
+  <!-- Mobile overlay sidebar (simple) -->
+  <div id="mobileSidebar" class="fixed inset-0 z-40 md:hidden hidden">
+    <div class="absolute inset-0 bg-black/40" onclick="closeMobileSidebar()"></div>
+    <div class="absolute left-0 top-0 h-full w-72 bg-white dark:bg-gray-900 p-5">
+      <div class="flex items-center gap-3  px-4 py-4 rounded-half">
+        <!-- Replace with your SVG logo or <img> -->
+        <div class=" rounded-full flex items-center justify-center text-white font-bold"> <img src="../../img/logo/app-logo.png" alt="SwapIt Logo" class="h-8"></div>
+        <div>
+        
+        </div>
+      </div>
+      <nav class="space-y-3 text-sm">
+        <!-- Reuse same menu items -->
+        <a href="../../index-web.html" data-page="index" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 nav-link block px-2 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"><img src="../../img/buttom-nav/Home-1.svg" alt="SwapIt Logo" class="h-4"><span class="text-gray-900 dark:text-white">Home</span></a>
+		  
+        <a href="../../dashboard/dashboard-web.html" data-page="dashboard" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50nav-link block px-2 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"><img src="../../img/buttom-nav/index/dashboard-green.svg" alt="SwapIt Logo" class="h-3"><span class="text-gray-900 dark:text-white">Dashboard Overview</span></a>
+		  
+		  <a href="../../donation/donation-web-search.html" data-page="donations" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50nav-link block px-2 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"><img src="../../img/buttom-nav/index/giveback-green.svg" alt="SwapIt Logo" class="h-3"><span class="text-gray-900 dark:text-white">Donations & Request</span></a>
+		  
+		  <a href="investor-marketplace-web.html" data-page="investment" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50nav-link block px-2 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"><img src="../../img/buttom-nav/index/investment.svg" alt="SwapIt Logo" class="h-4"><span class="text-gray-900 dark:text-white">Pitches & Investment</span></a>
+		  
+		  <a href="../../all-users/invite-earn-web.html" data-page="points" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50nav-link block px-4 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"><img src="../../img/buttom-nav/index/points.svg" alt="SwapIt Logo" class="h-4"><span class="text-gray-900 dark:text-white">Points & Rewards</span></a>
+		  
+		  <a href="../../pages/premium/premium-web.html" data-page="premium" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50nav-link block px-2 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"><img src="../../img/buttom-nav/index/premium-green.svg" alt="SwapIt Logo" class="h-4"><span class="text-gray-900 dark:text-white">Premium Offers</span></a>
+		  
+		  <a href="../../all-users/settings-web.html" data-page="settings" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50nav-link block px-2 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"><img src="../../img/buttom-nav/index/acc-green.svg" alt="SwapIt Logo" class="h-3"><span class="text-gray-900 dark:text-white">Accounts & Settings</span></a>
+        
+        
+      </nav>
+    </div>
+  </div>
+
+  
+
+
+<script>
+		    // Sidebar toggle
+    document.getElementById('openSidebarBtn').addEventListener('click', () => {
+      document.getElementById('mobileSidebar').classList.remove('hidden');
+    });
+    function closeMobileSidebar() {
+      document.getElementById('mobileSidebar').classList.add('hidden');
+    }
+	  
+	</script>
+	
+<style>	
+  .activeTab {
+    border-bottom: 2px solid #0E4D22;
+    color: #0E4D22;
+    font-weight: 600;
+  }
+</style>
+<style>
+  .active-link {
+    background-color: #f5f5f5; /* Light gray */
+    border: 1px solid #e3e3e3; /* Optional soft border */
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+</style>
+	
+	<!-- JS: you can move this into ../js/investor-marketplace.js -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const categoryFilter = document.getElementById('categoryFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const cardsWrap = document.getElementById('cardsWrap');
+    const noResults = document.getElementById('noResults');
+
+    // helper: parse funding like "₦500k - ₦4M" to a numeric average for sorting
+    function parseFundingRange(str) {
+      if (!str) return 0;
+      // remove currency symbol and spaces
+      // we'll try to find data-funding attribute on card instead (numeric range); fallback parse text
+      str = str.replace(/[^\dA-Za-z\-\s\.]/g, '').trim();
+      const parts = str.split('-').map(s => s.trim());
+      function toNum(s) {
+        if (!s) return 0;
+        s = s.toLowerCase();
+        let num = parseFloat(s.replace(/[^\d\.]/g, '')) || 0;
+        if (s.includes('k')) num *= 1000;
+        if (s.includes('m')) num *= 1000000;
+        return num;
+      }
+      if (parts.length === 1) return toNum(parts[0]);
+      return (toNum(parts[0]) + toNum(parts[1])) / 2;
+    }
+
+    // Show/hide and sort cards
+    function filterAndSort() {
+      const cat = categoryFilter.value;
+      const sort = sortFilter.value;
+
+      // collect original card elements (live list)
+      let cards = Array.from(cardsWrap.querySelectorAll('.investor-card'));
+
+      // filter
+      cards.forEach(card => {
+        const cats = (card.dataset.category || '').split(',').map(s => s.trim()).filter(Boolean);
+        if (!cat || cat === '') {
+          card.classList.remove('hidden');
+        } else {
+          if (cats.includes(cat)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        }
+      });
+
+      // build filtered list for sorting (only visible ones)
+      let visible = Array.from(cardsWrap.querySelectorAll('.investor-card:not(.hidden)'));
+
+      // sort
+      if (sort && visible.length > 0) {
+        visible.sort((a, b) => {
+          if (sort === 'recent') {
+            // use data-date attribute (ISO-ish) -- newer first
+            return new Date(b.dataset.date) - new Date(a.dataset.date);
+          }
+          // use data-funding attribute if present (format: min-max)
+          const aFunding = (a.dataset.funding || '').trim();
+          const bFunding = (b.dataset.funding || '').trim();
+          const aAvg = (aFunding && aFunding.includes('-')) ? parseFloat(aFunding.split('-')[0]) + parseFloat(aFunding.split('-')[1]) : parseFundingRange(aFunding);
+          const bAvg = (bFunding && bFunding.includes('-')) ? parseFloat(bFunding.split('-')[0]) + parseFloat(bFunding.split('-')[1]) : parseFundingRange(bFunding);
+
+          if (sort === 'lowest') {
+            return aAvg - bAvg;
+          }
+          if (sort === 'highest') {
+            return bAvg - aAvg;
+          }
+          return 0;
+        });
+
+        // Re-append in sorted order
+        visible.forEach(c => cardsWrap.appendChild(c));
+      }
+
+      // show NO results if none visible
+      const anyVisible = cardsWrap.querySelectorAll('.investor-card:not(.hidden)').length > 0;
+      if (!anyVisible) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    // hook events
+    categoryFilter.addEventListener('change', filterAndSort);
+    sortFilter.addEventListener('change', filterAndSort);
+
+    // Send / Cancel behavior (per card)
+    cardsWrap.addEventListener('click', function (e) {
+      // Send pitch clicked
+      const sendBtn = e.target.closest('.send-btn');
+      if (sendBtn) {
+        const card = sendBtn.closest('.investor-card');
+        // mark requested visually
+        card.classList.add('requested-border', 'border-green-100');
+        card.classList.add('requested'); // toggle class
+        // show cancel button and change send appearance
+        const cancel = card.querySelector('.cancel-btn');
+        if (cancel) cancel.classList.remove('hidden');
+        sendBtn.textContent = 'Request Sent';
+        sendBtn.classList.remove('bg-green-600", "dark:bg-gray-600');
+        sendBtn.classList.add('bg-gray-200", "dark:bg-gray-300');
+        // slightly dim card text
+        card.querySelectorAll('.message, .send-btn').forEach(i => i.setAttribute('disabled', true));
+        // highlight card background a bit
+        card.style.backgroundColor = '#f8fff7';
+        return;
+      }
+
+      // Cancel clicked
+      const cancelBtn = e.target.closest('.cancel-btn');
+      if (cancelBtn) {
+        const card = cancelBtn.closest('.investor-card');
+        // revert
+        card.classList.remove('requested-border', 'border-green-100', 'requested');
+        cancelBtn.classList.add('hidden');
+        const send = card.querySelector('.send-btn');
+        send.textContent = 'Send Pitch';
+        send.classList.remove('bg-gray-500", "dark:bg-gray-600');
+        send.classList.add('bg-green-600", "dark:bg-gray-600');
+        card.querySelectorAll('.message, .send-btn').forEach(i => i.removeAttribute('disabled'));
+        card.style.backgroundColor = '';
+        return;
+      }
+    });
+
+    // initial run
+    filterAndSort();
+  });
+  </script>
+	
+	<script src="js/script.js"></script>
+	<script src="../../js/script.js"></script>
+</body>
+</html>
